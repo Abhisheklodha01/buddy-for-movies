@@ -6,19 +6,16 @@ const MovieListSchema = new mongoose.Schema({
         ref: "User",
         required: true
     },
-    name: {
+    poster: {
         type: String,
         required: true
     },
-    movies: [
-        {
-            type: String
-        }
-    ],
-    isPublic: {
-        type: Boolean,
-        default: false
+    title: {
+        type: String
     },
+    year: {
+        type: String
+    }
 });
 const MovieList = mongoose.model("MovieList", MovieListSchema);
 
