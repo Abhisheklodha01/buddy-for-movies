@@ -3,13 +3,12 @@ import User from '../models/user.model.js';
 
 
 export const isAuthenticated = async (req, res, next) => {
-    const token = req.cookies?.token ||
-     req.header("authorization")?.replace("Bearer ", "")
+    const token = req.headers["authorization"]?.replace("Bearer ", "")
     try {
         if (!token) {
             return res.status(401).json({
                 success: false,
-                message:  "Unauthorized request"
+                message: "Unauthorized request"
             })
         }
 
@@ -17,18 +16,18 @@ export const isAuthenticated = async (req, res, next) => {
         if (!decodedToken) {
             return res.status(401).json({
                 success: false,
-                message:  "Invalid Token"
+                message: "Invalid Token"
             })
         }
         const user = await User.findById(decodedToken._id).select("-password")
-    
+
         if (!user) {
             return res.status(401).json({
                 success: false,
-                message:  "Invalid token"
+                message: "Invalid token"
             })
         }
-       
+
         req.user = user
         next()
     } catch (error) {
@@ -37,5 +36,5 @@ export const isAuthenticated = async (req, res, next) => {
             message: "Internal server error"
         })
     }
-    
+
 }
