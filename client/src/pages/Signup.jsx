@@ -112,7 +112,7 @@ const SignUp = () => {
               ) : (
                 <button
                   type="submit"
-                  className=" py-2 px-[120px] md:px-44 bg-gradient-to-r
+                  className="ml-3 py-2 px-[100px] md:px-44 bg-gradient-to-r
                          from-blue-600 to-sky-600 rounded-lg mt-5"
                 >
                   Sign Up

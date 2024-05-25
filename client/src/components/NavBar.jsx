@@ -81,13 +81,13 @@ const NavBar = () => {
           <div className="mr-5 text-lg text-white ">
             <Link
               to={"/login"}
-              className="py-2 px-4 border-2 border-gray-300 rounded-lg"
+              className="py-2 px-4 border-2 border-gray-300 rounded-lg ml-2"
             >
               Sign In
             </Link>
             <Link
               to={"/signup"}
-              className="ml-4 py-2 px-4 border-2 border-gray-300 rounded-lg"
+              className="ml-3 py-2 px-4 border-2 border-gray-300 rounded-lg"
             >
               Sign Up
             </Link>

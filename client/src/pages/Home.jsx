@@ -88,7 +88,8 @@ const Home = () => {
         />
         <button
           type="submit"
-          className="py-2 px-6 bg-blue-500 text-white rounded-md"
+          className="py-2 px-6 bg-blue-500 text-white rounded-md
+           mt-5 ml-10 md:ml-0 md:mt-0"
         >
           Search
         </button>
