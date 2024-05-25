@@ -1,0 +1,59 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { server } from "../utils/constants";
+
+const PlayList = () => {
+  const [lists, setLists] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const fetchLists = async () => {
+      try {
+        setLoading(true);
+        const { data } = await axios.get(`${server}/movieslists/getlist`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setLists([...data.lists]);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+    fetchLists();
+  }, []);
+  return (
+    <div className="min-h-screen p-8 bg-gray-800 text-white">
+      <h2 className="text-2xl mb-4 mt-4 underline underline-offset-8">
+        Your PlayLists
+      </h2>
+      {loading && (
+        <div className="ml-[700px] mt-[100px]">
+          <span className="loading loading-spinner loading-lg text-secondary"></span>
+        </div>
+      )}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
+        {lists.map((list) => (
+          <div
+            key={list._id}
+            className="border bg-gray-600 pt-5 pb-2 pl-4 pr-4 rounded-lg"
+          >
+            <img
+              src={list.poster}
+              alt="poster"
+              className="h-[300px] w-[400px]"
+            />
+            <div className="flex flex-row mt-3">
+              <h3 className="text-xl">Title: {list.title}</h3>
+              <h3 className="text-xl ml-5">Released: {list.year}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default PlayList;
