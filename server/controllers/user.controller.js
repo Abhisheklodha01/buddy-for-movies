@@ -8,7 +8,6 @@ dotenv.config()
 
 export const Registercontroller = async (req, res) => {
     const { fullName, email, password } = req.body
-    const isAdmin = false;
     try {
         if (!fullName || !email || !password) {
             return res.status(400).json({
@@ -30,7 +29,6 @@ export const Registercontroller = async (req, res) => {
             fullName,
             email,
             password: hashedPassword,
-            isAdmin
         })
 
         const options = {
