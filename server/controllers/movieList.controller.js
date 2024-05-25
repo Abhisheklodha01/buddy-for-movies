@@ -1,11 +1,10 @@
 import MovieList from '../models/movieList.model.js'
 
-
 export const createMovieListcontroller = async (req, res) => {
-    const { name, movies, isPublic } = req.body;
+    const { poster, year, title } = req.body;
     const userId = req.user._id
     try {
-        if (!name || !movies) {
+        if (!poster || !title || !year) {
             return res.status(400).json({
                 success: false,
                 message: "All fields are required"
@@ -13,9 +12,9 @@ export const createMovieListcontroller = async (req, res) => {
         }
         const list = await MovieList.create({
             userId,
-            name,
-            movies,
-            isPublic
+            poster,
+            title,
+            year
         })
 
         return res.status(200).json({
