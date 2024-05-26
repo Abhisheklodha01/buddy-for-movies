@@ -7,8 +7,9 @@ import { server } from "../utils/constants.js";
 import { Context } from "../main.jsx";
 import LoaderSvg from "../assets/loader.svg";
 
+
 const SignIn = () => {
-  const { setIsAuthenticated } = useContext(Context);
+  const { setIsAuthenticated} = useContext(Context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -103,7 +104,7 @@ const SignIn = () => {
               ) : (
                 <button
                   type="submit"
-                  className="ml-3 py-2 px-[100px] md:px-44 bg-gradient-to-r
+                  className="ml-4 py-2 px-14 md:px-44 bg-gradient-to-r
                           from-blue-600 to-sky-600 rounded-lg mt-5"
                 >
                   Sign In
