@@ -16,9 +16,9 @@ const NavBar = () => {
   };
 
   return (
-    <div className="bg-[#fb6f92] h-20 flex justify-between items-center">
+    <div className="bg-[#bf7386] h-20 flex justify-between items-center">
       <div>
-        <h1 className="text-xl text-[#e3d5ca] ml-4">
+        <h1 className="text-xl text-[#e3d5ca] ml-1 md:ml-3">
           😜<span className="hidden md:inline">BUDDY-FOR-</span>MOVIES
         </h1>
       </div>
@@ -69,26 +69,20 @@ const NavBar = () => {
       <div className="md:hidden text-white">
         {isAuthenticated ? (
           <div>
-            <Link to={"/home"} className="mr-5 hover:text-xl">
+            <Link to={"/home"} className="mr-2 ">
               Home
             </Link>
-            <Link to={"/playlist"} className="hover:text-xl">
+            <Link to={"/playlist"} >
               {" "}
               Your Playlist
             </Link>
           </div>
         ) : (
-          <div className="mr-5 text-lg text-white ">
-            <Link
-              to={"/login"}
-              className="py-2 px-4 border-2 border-gray-300 rounded-lg ml-2"
-            >
-              Sign In
+          <div className=" text-white text-lg mr-2">
+            <Link to={"/login"} className="ml-1 mr-4 ">
+              SignIn
             </Link>
-            <Link
-              to={"/signup"}
-              className="ml-3 py-2 px-4 border-2 border-gray-300 rounded-lg"
-            >
+            <Link to={"/signup"}>
               Sign Up
             </Link>
           </div>
@@ -99,7 +93,7 @@ const NavBar = () => {
         className="md:hidden cursor-pointer pr-4 mt-4 z-20 text-white"
       >
         {nav ? (
-          <FaTimes size={30} className="mr-40" />
+          <FaTimes size={30} className="mr-28" />
         ) : (
           <FaBars size={30} className="mb-4" />
         )}

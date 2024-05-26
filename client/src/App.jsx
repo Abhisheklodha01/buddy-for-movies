@@ -8,9 +8,10 @@ import Footer from "./components/Footer";
 import ForgotPassword from "./pages/ForgotPassword";
 import PlayList from "./components/PlayList";
 import { useContext, useEffect } from "react";
-import { Context } from "./main.jsx";
+import { Context } from "./main";
 import axios from "axios";
 import { server } from "./utils/constants.js";
+import UserProfile from "./components/UserProfile.jsx";
 
 function App() {
   const { isAuthenticated, setUser, setIsAuthenticated } = useContext(Context);
@@ -56,6 +57,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/playlist" element={<PlayList />} />
+          <Route path="/user" element={<UserProfile />} />
           <Route />
         </Routes>
         <Footer />
