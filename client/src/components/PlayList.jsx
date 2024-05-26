@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { server } from "../utils/constants";
+import { Context } from "../main";
+import { useNavigate } from "react-router-dom";
 
 const PlayList = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useContext(Context);
   const [lists, setLists] = useState([]);
   const [loading, setLoading] = useState(false);
   const token = localStorage.getItem("token");
@@ -24,6 +28,11 @@ const PlayList = () => {
     };
     fetchLists();
   }, []);
+ 
+  if (isAuthenticated === false) {
+     navigate("/")
+  }
+
   return (
     <div className="min-h-screen p-8 bg-gray-800 text-white">
       <h2 className="text-2xl mb-4 mt-4 underline underline-offset-8">
