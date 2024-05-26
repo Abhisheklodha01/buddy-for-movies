@@ -9,6 +9,8 @@ const Home = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [suggestedresults, setsuggestedResults] = useState([]);
+  const [suggestedresults2, setsuggestedResults2] = useState([]);
+  const [suggestedresults3, setsuggestedResults3] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { isAuthenticated } = useContext(Context);
@@ -71,6 +73,32 @@ const Home = () => {
     };
     fetchMovies();
   }, []);
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        setLoading(true);
+        const { data } = await axios.get(`${server}/movies/getmovies2`);
+        setsuggestedResults2(data.movies.Search);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+    fetchMovies();
+  }, []);
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        setLoading(true);
+        const { data } = await axios.get(`${server}/movies/getmovies3`);
+        setsuggestedResults3(data.movies.Search);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+    fetchMovies();
+  }, []);
 
   if (isAuthenticated === false) {
     navigate("/");
@@ -79,20 +107,21 @@ const Home = () => {
   return (
     <div className="min-h-screen p-8 bg-gray-800 text-white">
       <form onSubmit={handleSearch} className="mb-8">
-        <input
-          type="text"
-          placeholder="Search Movies"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className="p-2 border rounded-full bg-gray-500 outline-none mr-2"
-        />
-        <button
-          type="submit"
-          className="py-2 px-6 bg-blue-500 text-white rounded-md
-           mt-5 ml-10 md:ml-0 md:mt-0"
-        >
-          Search
-        </button>
+        <div className="flex flex-row">
+          <input
+            type="text"
+            placeholder="Search Movies"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="p-2 border rounded-full bg-gray-500 outline-none mr-2 ml-[-20px]"
+          />
+          <button
+            type="submit"
+            className="py-2 md:px-6 px-4 bg-blue-500 text-white rounded-md"
+          >
+            Search
+          </button>
+        </div>
       </form>
       <div>
         <h2 className="text-2xl mb-4">Search Results</h2>
@@ -142,11 +171,55 @@ const Home = () => {
                 className="h-[300px] w-[400px] rounded-xl"
               />
               <div className="flex flex-row mt-3 text-xl">
-                <h3 className="mr-5">Title: {movie.Title}</h3>
+                <h3 className="mr-5">Type: {movie.Type}</h3>
                 <p>Released: {movie.Year}</p>
               </div>
               <button
-                onClick={() => addToList(movie.Poster, movie.Year, movie.Title)}
+                onClick={() => addToList(movie.Poster, movie.Year, movie.Type)}
+                className="mt-5 py-2 px-6 bg-green-500 text-white rounded"
+              >
+                Add to List
+              </button>
+            </div>
+          ))}
+          {suggestedresults2.map((movie) => (
+            <div
+              key={movie.imdbID}
+              className="border bg-gray-600 pt-5 pb-2 pl-4 pr-4 rounded-lg"
+            >
+              <img
+                src={movie.Poster}
+                alt="poster"
+                className="h-[300px] w-[400px] rounded-xl"
+              />
+              <div className="flex flex-row mt-3 text-xl">
+                <h3 className="mr-5">Type: {movie.Type}</h3>
+                <p>Released: {movie.Year}</p>
+              </div>
+              <button
+                onClick={() => addToList(movie.Poster, movie.Year, movie.Type)}
+                className="mt-5 py-2 px-6 bg-green-500 text-white rounded"
+              >
+                Add to List
+              </button>
+            </div>
+          ))}
+          {suggestedresults3.map((movie) => (
+            <div
+              key={movie.imdbID}
+              className="border bg-gray-600 pt-5 pb-2 pl-4 pr-4 rounded-lg"
+            >
+              <img
+                src={movie.Poster}
+                alt="poster"
+                className="h-[300px] w-[400px] rounded-xl"
+              />
+              <div className="flex flex-row mt-3 text-xl">
+                <h3 className="mr-5">Type: {movie.Type}</h3>
+                <p>Released: {movie.Year}</p>
+              </div>
+              <button
+                onClick={() => addToList(movie.Poster, movie.Year, movie.Type)}
                 className="mt-5 py-2 px-6 bg-green-500 text-white rounded"
               >
                 Add to List
