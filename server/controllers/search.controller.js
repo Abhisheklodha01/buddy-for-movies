@@ -85,11 +85,26 @@ export const getMovieDescription = async (req, res) => {
     const { data } = await axios.get(
       `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&i=${movieId}`
     );
+    const movie = {
+      Actors: data.Actors,
+      Title: data.Title,
+      Country: data.Country,
+      Released: data.Released,
+      Poster: data.Poster,
+      Language: data.Language,
+      Rating: data.imdbRating,
+      Votes: data.imdbVotes,
+      Writer: data.Writer,
+      Type: data.Type,
+      Director: data.Director,
+      Genre: data.Genre,
+      Runtime: data.Runtime
 
+    }
     return res.status(200).json({
       success: true,
       message: "Movie details find successfully",
-      movie: data,
+      movie
     });
   } catch (error) {
     return res.status(500).json({
