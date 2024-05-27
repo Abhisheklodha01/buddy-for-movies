@@ -12,6 +12,6 @@ router.get("/search", searchMoviecontroller);
 router.get("/getmovies", suggestedMoviescontroller);
 router.get("/getmovies2", suggestedMoviescontroller2);
 router.get("/getmovies3", suggestedMoviescontroller2);
-router.get("/getdetails", getMovieDescription);
+router.post("/getdetail", getMovieDescription);
 
 export default router;
