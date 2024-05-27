@@ -107,7 +107,7 @@ const SignUp = () => {
                 <img
                   src={LoaderSvg}
                   alt="loader..."
-                  className="h-8 w-44 mt-5 ml-14 md:ml-24 rounded-lg"
+                  className="h-8 w-44 mt-5 ml-4 md:ml-24 rounded-lg"
                 />
               ) : (
                 <button

@@ -18,7 +18,7 @@ const HomePage = () => {
         to={
           isAuthenticated ? "/home" : "/signup"
         }
-        className="py-2 px-6 border-2 mt-10 ml-20 
+        className="py-2 px-6 border-2 mt-10 ml-24 
         md:ml-[300px] rounded-md text-white bg-pink-500">
           Get Started
         </Link>
