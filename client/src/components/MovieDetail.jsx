@@ -57,13 +57,17 @@ const MovieDetailPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-800 text-white pb-20">
+    <div className="min-h-screen bg-gray-800 text-white pb-20 md:pt-10">
       <div
         className="mt-10 flex justify-center items-center
-       flex-col md:flex-row p-5 pt-10 bg-gray-600 rounded-lg ml-3 mr-3"
+       flex-col md:flex-row p-5 pt-10 bg-gray-600 rounded-lg ml-3 mr-3 md:ml-52 md:mr-44"
       >
-        <img src={movie?.Poster} alt="poster" className="h-[400px]" />
-        <div className="md:ml-20 mt-5 md:mt-0 text-lg">
+        <img
+          src={movie?.Poster}
+          alt="poster"
+          className="h-[400px] w-[500px] rounded-md md:ml-[-100px]"
+        />
+        <div className="md:ml-10 mt-5 md:mt-0  text-lg">
           <p>Title: {movie?.Title}</p>
           <p>Country: {movie?.Country}</p>
           <p>Language: {movie?.Language}</p>
