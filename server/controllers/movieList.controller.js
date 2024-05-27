@@ -1,7 +1,7 @@
 import MovieList from "../models/movieList.model.js";
 
 export const createMovieListcontroller = async (req, res) => {
-  const { poster, year, title } = req.body;
+  const { poster, year, title, imdbId } = req.body;
   const userId = req.user._id;
   try {
     if (!poster || !title || !year) {
@@ -15,6 +15,7 @@ export const createMovieListcontroller = async (req, res) => {
       poster,
       title,
       year,
+      imdbId
     });
 
     return res.status(200).json({
@@ -46,3 +47,20 @@ export const getMovieListController = async (req, res) => {
     });
   }
 };
+
+
+export const DeleteMovieFromList = async (req, res) => {
+  const { movieId } = req.body
+  try {
+    await MovieList.findByIdAndDelete(movieId)
+    return res.status(200).json({
+      success: true,
+      message: "Movie deleted from playlist"
+    })
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "unable delete movie from playlist"
+    })
+  }
+}

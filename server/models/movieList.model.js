@@ -15,6 +15,9 @@ const MovieListSchema = new mongoose.Schema({
     },
     year: {
         type: String
+    },
+    imdbId: {
+        type: String
     }
 });
 const MovieList = mongoose.model("MovieList", MovieListSchema);
