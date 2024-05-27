@@ -64,7 +64,7 @@ const SignIn = () => {
           <div className="flex flex-col  justify-between ">
             <label htmlFor="fullName">Email:</label>
             <input
-              type="text"
+              type="email"
               placeholder="enter your email"
               className="outline-none rounded-md py-2 pl-4 bg-[#9e796b] mt-1 mb-5"
               onChange={(e) => setEmail(e.target.value)}
@@ -73,7 +73,7 @@ const SignIn = () => {
             <label htmlFor="fullName">Password:</label>
             <input
               type="text"
-              placeholder="Enter your password"
+              placeholder="Enter your Password "
               className="outline-none rounded-md py-2 pl-4 bg-[#9e796b] mt-1"
               onChange={(e) => setPassword(e.target.value)}
               value={password}

@@ -78,7 +78,7 @@ const SignUp = () => {
             />
             <label htmlFor="fullName">Email:</label>
             <input
-              type="text"
+              type="email"
               placeholder="enter your email"
               className="outline-none rounded-md py-2 pl-4 bg-[#9e796b] mt-1 mb-5"
               onChange={(e) => setEmail(e.target.value)}
