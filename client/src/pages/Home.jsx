@@ -33,7 +33,7 @@ const Home = () => {
   };
 
   const token = localStorage.getItem("token");
-  const addToList = async (poster, year, title) => {
+  const addToList = async (poster, year, title, imdbId) => {
     try {
       const { data } = await axios.post(
         `${server}/movieslists/createlist`,
@@ -41,6 +41,7 @@ const Home = () => {
           poster,
           year,
           title,
+          imdbId,
         },
         {
           headers: {
@@ -100,6 +101,10 @@ const Home = () => {
     fetchMovies();
   }, []);
 
+  const getMovieDetail = (movieId) => {
+    navigate(`/movieDetail/${movieId}`);
+  };
+
   if (isAuthenticated === false) {
     navigate("/");
   }
@@ -135,13 +140,16 @@ const Home = () => {
                 src={movie.Poster}
                 alt="poster"
                 className="h-[300px] w-[400px] rounded-xl"
+                onClick={() => getMovieDetail(movie.imdbID)}
               />
               <div className="flex flex-row mt-3 text-xl">
                 <h3 className="mr-5">Title: {movie.Title}</h3>
                 <p>Released: {movie.Year}</p>
               </div>
               <button
-                onClick={() => addToList(movie.Poster, movie.Year, movie.Title)}
+                onClick={() =>
+                  addToList(movie.Poster, movie.Year, movie.Title, movie.imdbID)
+                }
                 className="mt-5 py-2 px-6 bg-green-500 text-white rounded"
               >
                 Add to List
@@ -169,13 +177,16 @@ const Home = () => {
                 src={movie.Poster}
                 alt="poster"
                 className="h-[300px] w-[400px] rounded-xl"
+                onClick={() => getMovieDetail(movie.imdbID)}
               />
               <div className="flex flex-row mt-3 text-xl">
                 <h3 className="mr-5">Type: {movie.Type}</h3>
                 <p>Released: {movie.Year}</p>
               </div>
               <button
-                onClick={() => addToList(movie.Poster, movie.Year, movie.Type)}
+                onClick={() =>
+                  addToList(movie.Poster, movie.Year, movie.Type, movie.imdbID)
+                }
                 className="mt-5 py-2 px-6 bg-green-500 text-white rounded"
               >
                 Add to List
@@ -191,13 +202,16 @@ const Home = () => {
                 src={movie.Poster}
                 alt="poster"
                 className="h-[300px] w-[400px] rounded-xl"
+                onClick={() => getMovieDetail(movie.imdbID)}
               />
               <div className="flex flex-row mt-3 text-xl">
                 <h3 className="mr-5">Type: {movie.Type}</h3>
                 <p>Released: {movie.Year}</p>
               </div>
               <button
-                onClick={() => addToList(movie.Poster, movie.Year, movie.Type)}
+                onClick={() =>
+                  addToList(movie.Poster, movie.Year, movie.Type, movie.imdbID)
+                }
                 className="mt-5 py-2 px-6 bg-green-500 text-white rounded"
               >
                 Add to List
@@ -213,13 +227,16 @@ const Home = () => {
                 src={movie.Poster}
                 alt="poster"
                 className="h-[300px] w-[400px] rounded-xl"
+                onClick={() => getMovieDetail(movie.imdbID)}
               />
               <div className="flex flex-row mt-3 text-xl">
                 <h3 className="mr-5">Type: {movie.Type}</h3>
                 <p>Released: {movie.Year}</p>
               </div>
               <button
-                onClick={() => addToList(movie.Poster, movie.Year, movie.Type)}
+                onClick={() =>
+                  addToList(movie.Poster, movie.Year, movie.Type, movie.imdbID)
+                }
                 className="mt-5 py-2 px-6 bg-green-500 text-white rounded"
               >
                 Add to List

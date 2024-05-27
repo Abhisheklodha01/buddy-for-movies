@@ -3,12 +3,14 @@ import axios from "axios";
 import { server } from "../utils/constants";
 import { Context } from "../main";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const PlayList = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useContext(Context);
   const [lists, setLists] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [refresh, setRefresh] = useState(false);
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -27,12 +29,41 @@ const PlayList = () => {
       }
     };
     fetchLists();
-  }, []);
- 
-  if (isAuthenticated === false) {
-     navigate("/")
-  }
+  }, [refresh]);
 
+  const DeleteMovieFromList = async (movieId) => {
+    try {
+      const { data } = await axios.post(
+        `${server}/movieslists/deletemovie`,
+        {
+          movieId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      toast.success(data.message, {
+        position: "top-center",
+      });
+      setRefresh(!refresh);
+    } catch (error) {
+      toast.error(error.response.data.message, {
+        position: "top-center",
+      });
+      setRefresh(!refresh);
+    }
+  };
+
+  const getMovieDetail = (movieId) => {
+    navigate(`/movieDetail/${movieId}`);
+  };
+
+  if (isAuthenticated === false) {
+    navigate("/");
+  }
   return (
     <div className="min-h-screen p-8 bg-gray-800 text-white">
       <h2 className="text-2xl mb-4 mt-4 underline underline-offset-8">
@@ -53,11 +84,19 @@ const PlayList = () => {
               src={list.poster}
               alt="poster"
               className="h-[300px] w-[400px]"
+              onClick={() => getMovieDetail(list.imdbId)}
             />
             <div className="flex flex-row mt-3">
               <h3 className="text-xl">Title: {list.title}</h3>
               <h3 className="text-xl ml-5">Released: {list.year}</h3>
             </div>
+            <button
+              onClick={() => DeleteMovieFromList(list._id)}
+              className="py-1 pl-3 pr-3 mt-3 rounded-md
+               bg-green-600 border-2 border-green-600"
+            >
+              Delete From List
+            </button>
           </div>
         ))}
       </div>
