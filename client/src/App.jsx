@@ -12,6 +12,7 @@ import { Context } from "./main";
 import axios from "axios";
 import { server } from "./utils/constants.js";
 import UserProfile from "./components/UserProfile.jsx";
+import MovieDetailPage from './components/MovieDetail.jsx'
 
 function App() {
   const { isAuthenticated, setUser, setIsAuthenticated } = useContext(Context);
@@ -58,6 +59,7 @@ function App() {
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/playlist" element={<PlayList />} />
           <Route path="/user" element={<UserProfile />} />
+          <Route path="/moviedetail/:movieId" element={<MovieDetailPage />} />
           <Route />
         </Routes>
         <Footer />
