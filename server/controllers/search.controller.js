@@ -1,5 +1,6 @@
 import axios from "axios";
 import dotenv from "dotenv";
+import MovieList from "../models/movieList.model.js";
 
 dotenv.config();
 
@@ -113,3 +114,27 @@ export const getMovieDescription = async (req, res) => {
     });
   }
 };
+
+
+export const CheckmovieIsinPlaylist = async (req, res) => {
+  const { imdbId } = req.body
+  try {
+    const movie = await MovieList.findOne({imdbId})
+    if (movie) {
+      return res.status(200).json({
+        success: true,
+        movie
+      })
+    }
+    else {
+      return res.status(200).json({
+        success: false
+      })
+    }
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error"
+    })
+  }
+}
