@@ -72,19 +72,14 @@ const NavBar = () => {
             <Link to={"/home"} className="mr-2 ">
               Home
             </Link>
-            <Link to={"/playlist"} >
-              {" "}
-              Your Playlist
-            </Link>
+            <Link to={"/playlist"}> Your Playlist</Link>
           </div>
         ) : (
           <div className=" text-white text-lg mr-2">
             <Link to={"/login"} className="ml-1 mr-4 ">
               SignIn
             </Link>
-            <Link to={"/signup"}>
-              Sign Up
-            </Link>
+            <Link to={"/signup"}>Sign Up</Link>
           </div>
         )}
       </div>
@@ -93,33 +88,33 @@ const NavBar = () => {
         className="md:hidden cursor-pointer pr-4 mt-4 z-20 text-white"
       >
         {nav ? (
-          <FaTimes size={30} className="mr-28" />
+          <FaTimes size={30} className="mr-32" />
         ) : (
           <FaBars size={30} className="mb-4" />
         )}
       </div>
       {nav ? (
-        <div className=" flex flex-col bg-[#fb6f92] z-10">
+        <div className=" flex flex-col bg-[#ea8ea5] z-10">
           {isAuthenticated ? (
             <ul
               className="flex flex-col justify-center
                          items-center absolute top-0 left-0
-                         w-full h-screen bg-[#fb6f92] text-white "
+                         w-full h-screen bg-[#ca7d90] text-white "
             >
               <div className="text-2xl text-center mb-5 font-bold">
                 <li className="cursor-pointer ">
                   <Link
                     to={"/user"}
                     onClick={() => setNav(false)}
-                    className="py-2 px-6 border-2 bg-[#d5a1a1] border-gray-300 rounded-lg text-xl"
+                    className="py-1 px-4 border-2  border-gray-100 rounded-lg text-xl"
                   >
                     My Profile
                   </Link>
                 </li>
               </div>
-              <li className="x-4 cursor-pointer capitalize py-6 text-4xl">
+              <li className=" cursor-pointer capitalizetext-4xl mt-5">
                 <Link
-                  className="py-2 px-10 border-2 bg-[#d5a1a1] border-gray-300 rounded-lg text-xl"
+                  className="py-1 px-8 border-2 border-gray-100 rounded-lg text-xl"
                   to="/"
                   onClick={LogoutHandler}
                 >

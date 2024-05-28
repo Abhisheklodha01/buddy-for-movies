@@ -7,9 +7,8 @@ import { server } from "../utils/constants.js";
 import { Context } from "../main.jsx";
 import LoaderSvg from "../assets/loader.svg";
 
-
 const SignIn = () => {
-  const { setIsAuthenticated} = useContext(Context);
+  const { setIsAuthenticated } = useContext(Context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -66,6 +65,7 @@ const SignIn = () => {
             <input
               type="email"
               placeholder="enter your email"
+              required
               className="outline-none rounded-md py-2 pl-4 bg-[#9e796b] mt-1 mb-5"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
@@ -74,6 +74,7 @@ const SignIn = () => {
             <input
               type="text"
               placeholder="Enter your Password "
+              required
               className="outline-none rounded-md py-2 pl-4 bg-[#9e796b] mt-1"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
@@ -99,12 +100,12 @@ const SignIn = () => {
                 <img
                   src={LoaderSvg}
                   alt="loader..."
-                  className="h-8 w-44 mt-5 ml-4 md:ml-24 rounded-lg"
+                  className="h-8 w-44 md:w-full mt-5  rounded-lg"
                 />
               ) : (
                 <button
                   type="submit"
-                  className="ml-4 py-2 px-14 md:px-44 bg-gradient-to-r
+                  className="py-2 px-16 md:px-44 bg-gradient-to-r
                           from-blue-600 to-sky-600 rounded-lg mt-5"
                 >
                   Sign In

@@ -58,8 +58,9 @@ const ForgotPassword = () => {
           <div className="flex flex-col  justify-between ">
             <label htmlFor="fullName">Email:</label>
             <input
-              type="text"
+              type="email"
               placeholder="enter your email"
+              required
               className="outline-none rounded-md py-2 pl-4 px-20 bg-[#9e796b] mt-1 mb-5"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
@@ -68,6 +69,7 @@ const ForgotPassword = () => {
             <input
               type="text"
               placeholder="Enter your password"
+              required
               className="outline-none rounded-md py-2 pl-4 px-20 bg-[#9e796b] mt-1"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
@@ -77,12 +79,12 @@ const ForgotPassword = () => {
                 <img
                   src={LoaderSvg}
                   alt="loader..."
-                  className="h-8 w-44 mt-5 ml-14 md:ml-24 rounded-lg"
+                  className="h-8 w-full mt-5 rounded-lg"
                 />
               ) : (
                 <button
                   type="submit"
-                  className="ml-8 py-2 px-10 bg-gradient-to-r
+                  className=" py-2 px-[75px] bg-gradient-to-r
                   from-blue-600 to-sky-600 rounded-lg mt-5"
                 >
                   Change Password
