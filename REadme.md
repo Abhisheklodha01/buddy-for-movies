@@ -52,3 +52,5 @@ npm start
 
 With these steps, you will have a fully functional MERN stack application with authentication, movie search, list management, and responsive design, all hosted online.
 
+
+Deployed Website = https://buddyformovies.netlify.app
