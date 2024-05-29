@@ -42,6 +42,8 @@ npm install
 MONGO_URI=<your-mongodb-uri>
 JWT_SECRET=<your-jwt-secret>
 OMDB_API_KEY=<your-omdb-api-key>
+PORT=<your-port>
+FRONTEND_URL=<your-frontend-url>
 
 4. npm run start
 
